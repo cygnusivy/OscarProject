@@ -3,33 +3,18 @@ package oscar;
 import static java.lang.Integer.parseInt;
 
 public class Oscar {
-    Integer Index;
-    Integer Year;
-    Integer Age;
-    String Name;
-    String Movie;
+    Integer index;
+    Integer year;
+    Integer age;
+    String name;
+    String movie;
 
-    public Oscar(Integer Index, Integer Year, Integer Age, String Name, String Movie){
-        this.Index = Index;
-        this.Year = Year;
-        this.Age = Age;
-        this.Name = Name;
-        this.Movie = Movie;
-    }
-    public Integer getIndex(){
-        return Index;
-    }
-    public Integer getYear(){
-        return Year;
-    }
-    public Integer getAge() {
-        return Age;
-    }
-    public String getName(){
-        return Name;
-    }
-    public String getMovie(){
-        return Movie;
+    public Oscar(Integer index, Integer year, Integer age, String name, String mavie){
+        this.index = index;
+        this.year = year;
+        this.age = age;
+        this.name = name;
+        this.movie = movie;
     }
 
     public static Oscar fromLine(String line){
@@ -41,15 +26,55 @@ public class Oscar {
                 split[3],
                 split[4]
         );
-
     }
+
+    public Integer getIndex() {
+        return index;
+    }
+
+    public void setIndex(Integer index) {
+        this.index = index;
+    }
+
+    public Integer getYear() {
+        return year;
+    }
+
+    public void setYear(Integer year) {
+        this.year = year;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getMovie() {
+        return movie;
+    }
+
+    public void setMovie(String movie) {
+        this.movie = movie;
+    }
+
     @Override
     public String toString(){
         return "Oscar Awards{" +
-                ", Ganhador: " + Name +
-                ", Idade: " + Age +
-                ", Ano da premiação: " + Year +
-                ", Título da Obra: " + Movie + '\'' +
+                ", Ganhador: " + name +
+                ", Idade: " + age +
+                ", Ano da premiação: " + year +
+                ", Título da Obra: " + movie + '\'' +
                 '}';
     }
 }
