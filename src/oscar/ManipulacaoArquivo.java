@@ -1,10 +1,10 @@
 package oscar;
 
 
+import java.nio.file.Path;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.Collections;
 import java.util.List;
 import java.io.IOException;
@@ -12,17 +12,15 @@ import java.io.IOException;
 
 public class ManipulacaoArquivo {
 
-    private final List<Oscar> roster;
+    private final List<Oscar> oscarAwardList; // ok
 
-    public ManipulacaoArquivo(String fileName) {
-
-        this.roster = leiaArquivo(fileName);
+    public ManipulacaoArquivo(String fileName) throws IOException {
+        this.oscarAwardList = this.preparaLeituraDoArquivo(fileName);
     }
 
-    private List<Oscar> leiaArquivo(String fileName) {
-        try (Stream<String> fileLine = Files.lines(Paths.get(fileName))) {
-            return fileLine
-                    .skip(1)
+    private List<Oscar> preparaLeituraDoArquivo(String fileName) throws IOException {
+        try (Stream<String> lines = Files.lines(Path.of(fileName))) {
+            return lines.skip(1)
                     .map(Oscar::fromLine)
                     .collect(Collectors.toList());
         } catch (IOException e) {
@@ -31,8 +29,8 @@ public class ManipulacaoArquivo {
         }
 
     }
-    public List<Oscar> getRoster(){
-        return roster;
+    public List<Oscar> getOscarAwardList(){
+        return oscarAwardList;
     }
 }
 

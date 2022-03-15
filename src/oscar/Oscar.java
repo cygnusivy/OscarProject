@@ -18,7 +18,7 @@ public class Oscar {
     }
 
     public static Oscar fromLine(String line){
-        String[] split = line.split("; (?=\\S)");
+        String[] split = line.split("; ");
         return new Oscar(
                 parseInt(split[0]),
                 parseInt(split[1]),
@@ -71,10 +71,11 @@ public class Oscar {
     @Override
     public String toString(){
         return "Oscar Awards{" +
-                ", Ganhador: " + name +
-                ", Idade: " + age +
-                ", Ano da premiação: " + year +
-                ", Título da Obra: " + movie + '\'' +
+                "index = " + index +
+                "year = " + year +
+                "age = " + age +
+                "name = '" + movie + '\'' +
+                "movie = '" + movie +'\'' +
                 '}';
     }
 }
