@@ -26,7 +26,7 @@ public class Aplicacao {
         Aplicacao app = new Aplicacao();
         app.encontreAtorMaisJovem();
         app.encontreAtrizMaisPremiada();
-        app.encontreJovemMaisPremiada();
+        app.encontreJovemMaisPremiadaEntreVinteETrintaAnos();
         app.encontreOsAtoresEAtrizesComMaisDeUmPremio();
         app.buscaPorNome("Jodie Foster");
     }
@@ -46,7 +46,19 @@ public class Aplicacao {
                 .ifPresent((o -> System.out.println(o.getName())));
     }
 
-    private void encontreJovemMaisPremiada() {
+    private void encontreJovemMaisPremiadaEntreVinteETrintaAnos() {
+        System.out.println("Atriz entre 20 e 30 anos mais premiada");
+        Map<String, Long> mapNomeQuantidade = this.readerOscarFemale.getOscarAwardList().stream()
+                .filter(o -> o.getAge() >= 20 && o.getAge() <= 30)
+                .collect(Collectors.groupingBy(Oscar::getName, Collectors.counting()));
+        mapNomeQuantidade
+                .entrySet().stream()
+                .max(Comparator.comparingLong(Map.Entry::getValue))
+                .ifPresent(e -> mapNomeQuantidade.entrySet().stream()
+                        .filter(e1 -> e1.getValue().equals(e.getValue()))
+                        .forEach(e1 -> System.out.printf("%s - %d%n", e1.getKey(), e1.getValue())));
+
+
     }
 
     private void encontreOsAtoresEAtrizesComMaisDeUmPremio() {
@@ -62,7 +74,7 @@ public class Aplicacao {
         }
         else{
             System.out.printf("Nome: [%s], quantidade de Oscars: %d%n", name, resultList.size());
-            resultList.forEach(r -> System.out.printf("%d, %d, %s%n", r.getYear(), r.getAge(), r.getMov ie()));
+            resultList.forEach(r -> System.out.printf("%d, %d, %s%n", r.getYear(), r.getAge(), r.getMovie()));
         }
     }
 
