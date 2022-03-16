@@ -10,4 +10,8 @@
 ### Obs: Quando informado o nome de um ator ou atriz, dê um resumo de quantos prêmios ele/ela recebeu e liste ano, idade e nome de cada filme pelo qual foi premiado(a).
 
 
-## **Entendendo as aplicações do Framework Java Strams API na resolução das questões do projeto Ganhadores do Oscar**
+## **Entendendo as aplicações do Framework Java Streams API na resolução das questões do projeto Ganhadores do Oscar**
+
+### FileReader
+### Streams
+### Map
