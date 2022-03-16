@@ -1,12 +1,7 @@
 package oscar;
 
-import java.io.FileReader;
 import java.io.IOException;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
-import java.util.function.Function;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -57,11 +52,17 @@ public class Aplicacao {
                 .ifPresent(e -> mapNomeQuantidade.entrySet().stream()
                         .filter(e1 -> e1.getValue().equals(e.getValue()))
                         .forEach(e1 -> System.out.printf("%s - %d%n", e1.getKey(), e1.getValue())));
-
-
     }
 
     private void encontreOsAtoresEAtrizesComMaisDeUmPremio() {
+        System.out.println("Atores/atrizes com mais de um prêmio: ");
+        List<String> todosNomes = new ArrayList<>();
+        todosNomes.addAll(this.readerOscarFemale.getOscarAwardList().stream().map(Oscar::getName).collect(Collectors.toList()));
+        todosNomes.addAll(this.readerOscaMmale.getOscarAwardList().stream().map(Oscar::getName).collect(Collectors.toList()));
+        todosNomes.stream()
+                .filter(name -> Collections.frequency(todosNomes, name) >= 2)
+                .distinct()
+                .forEach(System.out::println);
     }
 
     private void buscaPorNome(String name) {
@@ -77,14 +78,5 @@ public class Aplicacao {
             resultList.forEach(r -> System.out.printf("%d, %d, %s%n", r.getYear(), r.getAge(), r.getMovie()));
         }
     }
-
-
-
-
-
-
-
-
-
 }
 
