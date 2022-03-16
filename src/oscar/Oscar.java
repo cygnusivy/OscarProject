@@ -9,7 +9,7 @@ public class Oscar {
     String name;
     String movie;
 
-    public Oscar(Integer index, Integer year, Integer age, String name, String mavie){
+    public Oscar(Integer index, Integer year, Integer age, String name, String movie){
         this.index = index;
         this.year = year;
         this.age = age;
