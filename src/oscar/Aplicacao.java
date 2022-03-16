@@ -27,14 +27,14 @@ public class Aplicacao {
     }
 
     private void encontreAtorMaisJovem() {
-        System.out.println("#1 Ator mair jovem:");
+        System.out.println(" Ator mair jovem:");
         this.readerOscaMmale.getOscarAwardList().stream()
                 .min(Comparator.comparing(Oscar::getAge)).
                 ifPresent(x -> System.out.printf("Ator mais jovem: " + x.getName() + ", Idade do ator: " + x.getAge() + ", Filme estrelado: " + x.getMovie() + ", Ano de lançamento: " + x.getYear() + "%n"));
     }
 
     private void encontreAtrizMaisPremiada() {
-        System.out.println("#3 Atriz mais premiada: ");
+        System.out.println("Atriz mais premiada: ");
         List<String> names = this.readerOscarFemale.getOscarAwardList().stream().map(Oscar::getName).collect(Collectors.toList());
         this.readerOscarFemale.getOscarAwardList().stream()
                 .max(Comparator.comparingInt(o -> Collections.frequency(names, o.getName())))
@@ -66,7 +66,7 @@ public class Aplicacao {
     }
 
     private void buscaPorNome(String name) {
-        System.out.println("#5 Nome: " + name);
+        System.out.println("Nome: " + name);
         List<Oscar> resultList = Stream.concat(
                 this.readerOscarFemale.getOscarAwardList().stream(), this.readerOscaMmale.getOscarAwardList().stream())
                 .filter(winner -> winner.getName().equalsIgnoreCase(name)).collect(Collectors.toList());
